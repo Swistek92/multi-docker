@@ -10,14 +10,14 @@ script:
   - docker run -e CI=true swistek/docker-react npm run test
 
 after_success:
-  - docker build -t stephengrider/multi-client ./client
-  - docker build -t stephengrider/multi-nginx ./nginx
-  - docker build -t stephengrider/multi-server ./server
-  - docker build -t stephengrider/multi-worker ./worker
+  - docker build -t swistek/multi-client ./client
+  - docker build -t swistek/multi-nginx ./nginx
+  - docker build -t swistek/multi-server ./server
+  - docker build -t swistek/multi-worker ./worker
   # Log in to the docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Take those images and push them to docker hub
-  - docker push stephengrider/multi-client
-  - docker push stephengrider/multi-nginx
-  - docker push stephengrider/multi-server
-  - docker push stephengrider/multi-worker
+  - docker push swistek/multi-client
+  - docker push swistek/multi-nginx
+  - docker push swistek/multi-server
+  - docker push swistek/multi-worker
